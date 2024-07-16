@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const welcomeRouter = require("./Routes/welcomeRoute");
 const courseRouter = require("./Routes/coursesRoutes");
 const text = require("./utils/StatusTexts");
+const cors = require("cors");
 const app = express();
-app.use(express.json());
 
+app.use(express.json());
+app.use(cors());
 app.use("/", welcomeRouter);
 app.use("/api/courses", courseRouter);
 app.all("*", (req, res) => {
